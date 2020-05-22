@@ -15,8 +15,8 @@
 	<%
 		Client client = (Client) pageContext.findAttribute("client");
 
-	if (client.getPrenomClient().isEmpty() || client.getNomClient().isEmpty() || client.getAdresseClient().isEmpty()
-			|| client.getTelephoneClient().isEmpty()) {
+	if (client.getPrenom().isEmpty() || client.getNom().isEmpty() || client.getAdresse().isEmpty()
+			|| client.getTelephone().isEmpty()) {
 	%>
 	<p>
 		<span class="info">Erreur - Vous n'avez pas rempli tous les
@@ -36,19 +36,19 @@
 		}
 	%>
 	<p>
-		Nom : ${ client.nomClient } <br />
+		Nom : ${ client.nom } <br />
 	</p>
 	<p>
-		Prenom : ${ client.prenomClient } <br />
+		Prenom : ${ client.prenom } <br />
 	</p>
 	<p>
-		Adress : ${ client.adresseClient } <br />
+		Adress : ${ client.adresse } <br />
 		<!-- affiche nom du client -->
 	<p>
-		Numéro de téléphone : ${ client.telephoneClient } <br />
+		Numéro de téléphone : ${ client.telephone } <br />
 	</p>
 	<p>
-		Email : ${ client.emailClient } <br />
+		Email : ${ client.email } <br />
 	</p>
 
 </body>

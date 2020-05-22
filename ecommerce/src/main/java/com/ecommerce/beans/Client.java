@@ -1,40 +1,40 @@
 package com.ecommerce.beans;
 
 public class Client {
-	private String nomClient;
-	private String prenomClient;
-	private String adresseClient;
-	private String telephoneClient;
-	private String emailClient;
-	public String getNomClient() {
-		return nomClient;
+	private String nom;
+	private String prenom;
+	private String adresse;
+	private String telephone;
+	private String email;
+	public String getNom() {
+		return nom;
 	}
-	public void setNomClient(String nomClient) {
-		this.nomClient = nomClient;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
-	public String getPrenomClient() {
-		return prenomClient;
+	public String getPrenom() {
+		return prenom;
 	}
-	public void setPrenomClient(String prenomClient) {
-		this.prenomClient = prenomClient;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
-	public String getAdresseClient() {
-		return adresseClient;
+	public String getAdresse() {
+		return adresse;
 	}
-	public void setAdresseClient(String adresseClient) {
-		this.adresseClient = adresseClient;
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
-	public String getTelephoneClient() {
-		return telephoneClient;
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setTelephoneClient(String telephoneClient) {
-		this.telephoneClient = telephoneClient;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	public String getEmailClient() {
-		return emailClient;
+	public String getEmail() {
+		return email;
 	}
-	public void setEmailClient(String emailClient) {
-		this.emailClient = emailClient;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

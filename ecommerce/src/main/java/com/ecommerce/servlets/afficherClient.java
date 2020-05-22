@@ -16,11 +16,11 @@ public class afficherClient extends HttpServlet {
 		
 		
 		Client client = new Client();
-		client.setNomClient(req.getParameter("nomClient"));
-		client.setPrenomClient(req.getParameter("prenomClient"));
-		client.setAdresseClient(req.getParameter("adresseClient"));
-		client.setTelephoneClient(req.getParameter("telephoneClient"));
-		client.setEmailClient(req.getParameter("emailClient"));
+		client.setNom(req.getParameter("nomClient"));
+		client.setPrenom(req.getParameter("prenomClient"));
+		client.setAdresse(req.getParameter("adresseClient"));
+		client.setTelephone(req.getParameter("telephoneClient"));
+		client.setEmail(req.getParameter("emailClient"));
 		req.setAttribute("client", client);
 				
 		this.getServletContext().getRequestDispatcher("/WEB-INF/afficherClient.jsp").forward(req, resp);
