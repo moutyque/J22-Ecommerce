@@ -3,5 +3,36 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+	<display-name>Archetype Created Web Application</display-name>
+
+<!-- Client servlets -->
+	<servlet>
+		<servlet-name>clientCreation</servlet-name>
+		<servlet-class>com.ecommerce.servlets.creationClient</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	
+<!-- Commande servlets -->
+		<servlet>
+		<servlet-name>commandeCreation</servlet-name>
+		<servlet-class>com.ecommerce.servlets.creationCommande</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		</servlet>
+	
+	
+<!-- Client servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>clientCreation</servlet-name>
+		<url-pattern>/clientCreation</url-pattern>
+	</servlet-mapping>
+
+
+<!-- Commande servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>commandeCreation</servlet-name>
+		<url-pattern>/commandeCreation</url-pattern>
+	</servlet-mapping>
+
+
 </web-app>
