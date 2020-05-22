@@ -11,25 +11,14 @@
 		<servlet-class>com.ecommerce.servlets.creationClient</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-	<servlet>
-		<servlet-name>afficherClient</servlet-name>
-		<servlet-class>com.ecommerce.servlets.afficherClient</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
+
 	
 <!-- Commande servlets -->
 		<servlet>
 		<servlet-name>commandeCreation</servlet-name>
 		<servlet-class>com.ecommerce.servlets.creationCommande</servlet-class>
 		<load-on-startup>1</load-on-startup>
-	</servlet>
-		<servlet>
-		<servlet-name>afficherCommande</servlet-name>
-		<servlet-class>com.ecommerce.servlets.afficherCommande</servlet-class>
-		<load-on-startup>2</load-on-startup>
-	</servlet>
-	
-	
+		</servlet>
 	
 	
 <!-- Client servlets mapping -->
@@ -37,19 +26,13 @@
 		<servlet-name>clientCreation</servlet-name>
 		<url-pattern>/clientCreation</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>afficherClient</servlet-name>
-		<url-pattern>/afficherClient</url-pattern>
-	</servlet-mapping>
+
 
 <!-- Commande servlets mapping -->
 	<servlet-mapping>
 		<servlet-name>commandeCreation</servlet-name>
 		<url-pattern>/commandeCreation</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>afficherCommande</servlet-name>
-		<url-pattern>/afficherCommande</url-pattern>
-	</servlet-mapping>
+
 
 </web-app>

@@ -13,31 +13,7 @@
 </head>
 <body>
 
-	<%
-		Commande commande = (Commande) pageContext.findAttribute("commande");
-	Client client = null;
-		if(commande!=null)client = commande.getClient();
-
-	if (commande==null || client== null || client.getPrenom().isEmpty() || client.getNom().isEmpty() || client.getAdresse().isEmpty()	|| client.getTelephone().isEmpty() ||
-			commande.getMontant()==0 || commande.getModeLivraison().isEmpty() || commande.getModePaiment().isEmpty() || commande.getStatutPaiment().isEmpty()) {
-	%>
-	<p>
-		<span class="info">Erreur - Vous n'avez pas rempli tous les
-			champs obligatorie !</br> <a
-			href="http://localhost:8080/ecommerce/clientCreation">Cliquer ici</a>
-			pour accéder au formulaire de création d'un client
-		</span>
-	</p>
-	<%
-		} else {
-	%>
-	<p>
-		<span class="info">Commande créé avec succès ! </span>
-	</p>
-
-	<%
-		}
-	%>
+	<p class="info">${message}</p>
 	<p>Client</p>
 	<p>
 		Nom : ${ client.nom } <br />

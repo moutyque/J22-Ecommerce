@@ -8,7 +8,7 @@
     </head>
     <body>
         <div>
-            <form method="get" action="afficherClient">
+            <form method="post" action="clientCreation">
                 <fieldset>
                     <legend>Informations client</legend>
     
