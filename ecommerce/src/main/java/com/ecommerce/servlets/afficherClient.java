@@ -22,7 +22,7 @@ public class afficherClient extends HttpServlet {
 		client.setTelephoneClient(req.getParameter("telephoneClient"));
 		client.setEmailClient(req.getParameter("emailClient"));
 		req.setAttribute("client", client);
-		
+				
 		this.getServletContext().getRequestDispatcher("/WEB-INF/afficherClient.jsp").forward(req, resp);
 
 	}
