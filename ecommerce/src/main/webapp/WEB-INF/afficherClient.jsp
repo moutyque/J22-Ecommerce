@@ -11,6 +11,8 @@
 
 </head>
 <body>
+    <c:import url="/inc/menu.jsp"/>
+
 <p class="info">${message}</p>
 	<p>
 		Nom : ${ client.nom } <br />
