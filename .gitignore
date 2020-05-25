@@ -23,3 +23,5 @@
 hs_err_pid*
 
 target/
+
+ecommerce/src/main/webapp/META-INF/maven/inc.game.small/
