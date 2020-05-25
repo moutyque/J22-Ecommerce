@@ -1,5 +1,16 @@
 package com.ecommerce.servlets;
 
+import static com.ecommerce.Constante.ATT_CLIENT_ADRESS;
+import static com.ecommerce.Constante.ATT_CLIENT_EMAIL;
+import static com.ecommerce.Constante.ATT_CLIENT_FIRST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_LAST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_PHONE;
+import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_MODE;
+import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_STATUS;
+import static com.ecommerce.Constante.ATT_COMMANDE_PAY_MODE;
+import static com.ecommerce.Constante.ATT_COMMANDE_PAY_STATUS;
+import static com.ecommerce.Constante.ATT_COMMANDE_TOTAL;
+
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -12,7 +23,6 @@ import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
 
 public class creationCommande extends HttpServlet {
-
     @Override
     protected void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher( "/WEB-INF/creationCommande.jsp" ).forward( req, resp );
@@ -21,26 +31,26 @@ public class creationCommande extends HttpServlet {
     @Override
     protected void doPost( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         Client client = new Client();
-        client.setNom( req.getParameter( "nomClient" ) );
-        client.setPrenom( req.getParameter( "prenomClient" ) );
-        client.setAdresse( req.getParameter( "adresseClient" ) );
-        client.setTelephone( req.getParameter( "telephoneClient" ) );
-        client.setEmail( req.getParameter( "emailClient" ) );
+        client.setNom( req.getParameter( ATT_CLIENT_LAST_NAME ) );
+        client.setPrenom( req.getParameter( ATT_CLIENT_FIRST_NAME ) );
+        client.setAdresse( req.getParameter( ATT_CLIENT_ADRESS ) );
+        client.setTelephone( req.getParameter( ATT_CLIENT_PHONE ) );
+        client.setEmail( req.getParameter( ATT_CLIENT_EMAIL ) );
 
         Commande commande = new Commande();
         commande.setClient( client );
         commande.setDate( LocalDate.now() );
-        commande.setModeLivraison( req.getParameter( "modeLivraisonCommande" ) );
-        commande.setModePaiment( req.getParameter( "modePaiementCommande" ) );
+        commande.setModeLivraison( req.getParameter( ATT_COMMANDE_DELIVERY_MODE ) );
+        commande.setModePaiment( req.getParameter( ATT_COMMANDE_PAY_MODE ) );
 
         try {
-            commande.setMontant( Double.parseDouble( req.getParameter( "montantCommande" ) ) );
+            commande.setMontant( Double.parseDouble( req.getParameter( ATT_COMMANDE_TOTAL ) ) );
         } catch ( Exception e ) {
             commande.setMontant( -1 );
         }
 
-        commande.setStatutLivraison( req.getParameter( "statutLivraisonCommande" ) );
-        commande.setStatutPaiment( req.getParameter( "statutPaiementCommande" ) );
+        commande.setStatutLivraison( req.getParameter( ATT_COMMANDE_DELIVERY_STATUS ) );
+        commande.setStatutPaiment( req.getParameter( ATT_COMMANDE_PAY_STATUS ) );
 
         req.setAttribute( "client", client );
         req.setAttribute( "commande", commande );

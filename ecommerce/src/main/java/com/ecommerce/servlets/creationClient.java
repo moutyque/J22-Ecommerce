@@ -1,5 +1,10 @@
 package com.ecommerce.servlets;
 
+import static com.ecommerce.Constante.ATT_CLIENT_EMAIL;
+import static com.ecommerce.Constante.ATT_CLIENT_FIRST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_LAST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_PHONE;
+
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -19,11 +24,11 @@ public class creationClient extends HttpServlet {
     @Override
     protected void doPost( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
         Client client = new Client();
-        client.setNom( req.getParameter( "nomClient" ) );
-        client.setPrenom( req.getParameter( "prenomClient" ) );
-        client.setAdresse( req.getParameter( "adresseClient" ) );
-        client.setTelephone( req.getParameter( "telephoneClient" ) );
-        client.setEmail( req.getParameter( "emailClient" ) );
+        client.setNom( req.getParameter( ATT_CLIENT_LAST_NAME ) );
+        client.setPrenom( req.getParameter( ATT_CLIENT_FIRST_NAME ) );
+        client.setAdresse( req.getParameter( ATT_CLIENT_PHONE ) );
+        client.setTelephone( req.getParameter( ATT_CLIENT_PHONE ) );
+        client.setEmail( req.getParameter( ATT_CLIENT_EMAIL ) );
         req.setAttribute( "client", client );
         this.getServletContext().getRequestDispatcher( "/WEB-INF/afficherClient.jsp" ).forward( req, resp );
     }
