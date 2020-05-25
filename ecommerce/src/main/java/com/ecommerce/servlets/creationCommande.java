@@ -1,5 +1,16 @@
 package com.ecommerce.servlets;
 
+import static com.ecommerce.Constante.ATT_CLIENT_ADRESS;
+import static com.ecommerce.Constante.ATT_CLIENT_EMAIL;
+import static com.ecommerce.Constante.ATT_CLIENT_FIRST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_LAST_NAME;
+import static com.ecommerce.Constante.ATT_CLIENT_PHONE;
+import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_MODE;
+import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_STATUS;
+import static com.ecommerce.Constante.ATT_COMMANDE_PAY_MODE;
+import static com.ecommerce.Constante.ATT_COMMANDE_PAY_STATUS;
+import static com.ecommerce.Constante.ATT_COMMANDE_TOTAL;
+
 import java.io.IOException;
 import java.time.LocalDate;
 
@@ -12,51 +23,38 @@ import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
 
 public class creationCommande extends HttpServlet {
+    @Override
+    protected void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/creationCommande.jsp" ).forward( req, resp );
+    }
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/creationCommande.jsp").forward(req, resp);
-	}
+    @Override
+    protected void doPost( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
+        Client client = new Client();
+        client.setNom( req.getParameter( ATT_CLIENT_LAST_NAME ) );
+        client.setPrenom( req.getParameter( ATT_CLIENT_FIRST_NAME ) );
+        client.setAdresse( req.getParameter( ATT_CLIENT_ADRESS ) );
+        client.setTelephone( req.getParameter( ATT_CLIENT_PHONE ) );
+        client.setEmail( req.getParameter( ATT_CLIENT_EMAIL ) );
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Client client = new Client();
-		client.setNom(req.getParameter("nomClient"));
-		client.setPrenom(req.getParameter("prenomClient"));
-		client.setAdresse(req.getParameter("adresseClient"));
-		client.setTelephone(req.getParameter("telephoneClient"));
-		client.setEmail(req.getParameter("emailClient"));
+        Commande commande = new Commande();
+        commande.setClient( client );
+        commande.setDate( LocalDate.now() );
+        commande.setModeLivraison( req.getParameter( ATT_COMMANDE_DELIVERY_MODE ) );
+        commande.setModePaiment( req.getParameter( ATT_COMMANDE_PAY_MODE ) );
 
-		Commande commande = new Commande();
-		commande.setClient(client);
-		commande.setDate(LocalDate.now());
-		commande.setModeLivraison(req.getParameter("modeLivraisonCommande"));
-		commande.setModePaiment(req.getParameter("modePaiementCommande"));
+        try {
+            commande.setMontant( Double.parseDouble( req.getParameter( ATT_COMMANDE_TOTAL ) ) );
+        } catch ( Exception e ) {
+            commande.setMontant( -1 );
+        }
 
-		try{
-			commande.setMontant(Double.parseDouble(req.getParameter("montantCommande")));
-		}
-		catch(Exception e) {
-			commande.setMontant(0);
-		}
+        commande.setStatutLivraison( req.getParameter( ATT_COMMANDE_DELIVERY_STATUS ) );
+        commande.setStatutPaiment( req.getParameter( ATT_COMMANDE_PAY_STATUS ) );
 
-		commande.setStatutLivraison(req.getParameter("statutLivraisonCommande"));
-		commande.setStatutPaiment(req.getParameter("statutPaiementCommande"));
-		String message ="";
+        req.setAttribute( "client", client );
+        req.setAttribute( "commande", commande );
+        this.getServletContext().getRequestDispatcher( "/WEB-INF/afficherCommande.jsp" ).forward( req, resp );
 
-		if (client.getPrenom().isEmpty() || client.getNom().isEmpty() || client.getAdresse().isEmpty()	|| client.getTelephone().isEmpty() ||
-				commande.getMontant()==0 || commande.getModeLivraison().isEmpty() || commande.getModePaiment().isEmpty() || commande.getStatutPaiment().isEmpty()) {
-			message ="Erreur - Vous n'avez pas rempli tous les	champs obligatorie !<br> <a	href=\"http://localhost:8080/ecommerce/commandeCreation\">Cliquer ici</a>	pour accéder au formulaire de création d'un client";
-
-		} else {
-			message ="Commande créé avec succès ! ";
-		}
-
-
-		req.setAttribute("client", client);
-		req.setAttribute("commande", commande);
-		req.setAttribute("message", message);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/afficherCommande.jsp").forward(req, resp);
-
-	}
+    }
 }
