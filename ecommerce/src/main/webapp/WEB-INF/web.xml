@@ -13,7 +13,7 @@
 	<!-- Client servlets -->
 	<servlet>
 		<servlet-name>clientCreation</servlet-name>
-		<servlet-class>com.ecommerce.servlets.creationClient</servlet-class>
+		<servlet-class>com.ecommerce.servlets.CreationClient</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
@@ -21,7 +21,7 @@
 	<!-- Commande servlets -->
 	<servlet>
 		<servlet-name>commandeCreation</servlet-name>
-		<servlet-class>com.ecommerce.servlets.creationCommande</servlet-class>
+		<servlet-class>com.ecommerce.servlets.CreationCommande</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
