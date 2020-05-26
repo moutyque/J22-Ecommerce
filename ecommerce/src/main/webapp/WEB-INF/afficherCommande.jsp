@@ -14,21 +14,8 @@
 <body>
 	<c:import url="/inc/menu.jsp" />
 	<p class="info">
-		<c:choose>
-			<c:when
-				test="${empty client.nom || empty client.prenom || empty client.adress || empty client.telephone || empty client.email
-			|| commande.montant<0 || empty commande.modeLivraison || empty commande.modePaiment || empty commande.statutPaiement}">
 
-				<c:out
-					value="Erreur - Vous n'avez pas rempli tous les	champs obligatorie !"></c:out>
-				<br>
-				<a href="http://localhost:8080/ecommerce/commandeCreation">Cliquer
-					ici</a>
-				<c:out value="pour accéder au formulaire de création d'une commande"></c:out>
-				<br>
-			</c:when>
-			<c:otherwise>
-				<c:out value="Commande créée avec succès !"></c:out>
+				<c:out value="${ resultat}"></c:out>
 				<p>Client</p>
 				<p>
 					Nom : ${ client.nom } <br />
@@ -64,8 +51,7 @@
 				<p>
 					Statut de livraison : ${ commande.statutLivraison } <br />
 				</p>
-			</c:otherwise>
-		</c:choose>
+	
 
 
 	</p>
