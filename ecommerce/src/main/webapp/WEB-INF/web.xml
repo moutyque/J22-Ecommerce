@@ -10,6 +10,7 @@
 	</jsp-config>
 	<display-name>Archetype Created Web Application</display-name>
 
+	<!-- _____________________________________________Servlet declaration______________________________________________________ -->
 	<!-- Client servlets -->
 	<servlet>
 		<servlet-name>clientCreation</servlet-name>
@@ -25,6 +26,18 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!-- List clients servlets -->
+	<servlet>
+		<servlet-name>listeClients</servlet-name>
+		<servlet-class>com.ecommerce.servlets.ListClients</servlet-class>
+	</servlet>
+
+<!-- List commandes servlets -->
+	<servlet>
+		<servlet-name>listeCommandes</servlet-name>
+		<servlet-class>com.ecommerce.servlets.ListCommandes</servlet-class>
+	</servlet>
+	<!-- _____________________________________________Servlet mapping______________________________________________________ -->
 
 	<!-- Client servlets mapping -->
 	<servlet-mapping>
@@ -39,5 +52,38 @@
 		<url-pattern>/commandeCreation</url-pattern>
 	</servlet-mapping>
 
+	<!-- List clients servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>listeClients</servlet-name>
+		<url-pattern>/listeClients</url-pattern>
+	</servlet-mapping>
+	
+	<!-- List commandes servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>listeCommandes</servlet-name>
+		<url-pattern>/listeCommandes</url-pattern>
+	</servlet-mapping>
+	
+	<!-- _____________________________________________Filter declaration______________________________________________________ -->
 
+	<filter>
+		<filter-name>Set Character Encoding</filter-name>
+		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>ignore</param-name>
+			<param-value>false</param-value>
+		</init-param>
+	</filter>
+	<!-- _____________________________________________Filter mapping______________________________________________________ -->
+
+
+
+	<filter-mapping>
+		<filter-name>Set Character Encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 </web-app>

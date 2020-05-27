@@ -6,7 +6,7 @@
 </head>
 <body>
    
-                <fieldset>
+               
                     <legend>Informations client</legend>
     
                     <label for="nomClient">Nom <span class="requis">*</span></label>
@@ -29,6 +29,5 @@
                     <input type="email" id="emailClient" name="emailClient" value="<c:out value="${client.email}"/>" size="20" maxlength="60" />
                    <span class="erreur">${errors.emailClient}</span><br />
                     
-                </fieldset>
 </body>
 </html>

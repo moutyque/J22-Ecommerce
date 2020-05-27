@@ -1,11 +1,17 @@
 package com.ecommerce.beans;
 
 public class Client {
+	@Override
+	public String toString() {
+		return this.prenom + " " + this.nom;
+	}
 	private String nom;
 	private String prenom;
 	private String adresse;
 	private String telephone;
 	private String email;
+	private String id = "";
+
 	public String getNom() {
 		return nom;
 	}
@@ -35,6 +41,12 @@ public class Client {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
