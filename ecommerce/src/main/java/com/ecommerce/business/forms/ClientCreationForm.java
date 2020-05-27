@@ -5,6 +5,7 @@ import static com.ecommerce.Constante.ATT_CLIENT_EMAIL;
 import static com.ecommerce.Constante.ATT_CLIENT_FIRST_NAME;
 import static com.ecommerce.Constante.ATT_CLIENT_LAST_NAME;
 import static com.ecommerce.Constante.ATT_CLIENT_PHONE;
+import static com.ecommerce.Constante.ATT_OLD_CLIENTS;
 import static com.ecommerce.business.forms.FormHelper.getValeurChamp;
 import static com.ecommerce.business.forms.FormHelper.setErreur;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.ecommerce.beans.Client;
+import com.ecommerce.dao.DaoFactory;
 
 public class ClientCreationForm {
 
@@ -29,13 +31,20 @@ public class ClientCreationForm {
 	}
 
 	public Client getClient(HttpServletRequest req) {
+		
+		Client client;
+		if (getValeurChamp(req, ATT_OLD_CLIENTS) != null) {
 
-		Client client = new Client();
-		client.setNom(getValeurChamp(req, ATT_CLIENT_LAST_NAME));
-		client.setPrenom(getValeurChamp(req, ATT_CLIENT_FIRST_NAME));
-		client.setAdresse(getValeurChamp(req, ATT_CLIENT_ADRESS));
-		client.setTelephone(getValeurChamp(req, ATT_CLIENT_PHONE));
-		client.setEmail(getValeurChamp(req, ATT_CLIENT_EMAIL));
+			client = DaoFactory.getDaoClient()
+					.get(getValeurChamp(req, ATT_OLD_CLIENTS));
+		} else {
+			client = new Client();
+			client.setNom(getValeurChamp(req, ATT_CLIENT_LAST_NAME));
+			client.setPrenom(getValeurChamp(req, ATT_CLIENT_FIRST_NAME));
+			client.setAdresse(getValeurChamp(req, ATT_CLIENT_ADRESS));
+			client.setTelephone(getValeurChamp(req, ATT_CLIENT_PHONE));
+			client.setEmail(getValeurChamp(req, ATT_CLIENT_EMAIL));
+		}
 
 		try {
 			validationEmail(client.getEmail());

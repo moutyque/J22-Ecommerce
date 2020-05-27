@@ -15,9 +15,11 @@ legend {
     font-weight: bold;
     color: #0568CD;
 }
-
+label{
+	  display: inline-block;
+	
+}
 form label {
-    float: left;
     width: 200px;
     margin: 3px 0px 0px 0px;
 }

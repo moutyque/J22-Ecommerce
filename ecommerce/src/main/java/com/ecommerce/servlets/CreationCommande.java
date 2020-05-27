@@ -18,6 +18,8 @@ public class CreationCommande extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
+
+		req.setAttribute("clients", DaoFactory.getDaoClient().getAll());
 		this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/creationCommande.jsp")
 				.forward(req, resp);
@@ -29,15 +31,19 @@ public class CreationCommande extends HttpServlet {
 		CommandeCreationForm form = new CommandeCreationForm();
 		Commande commande = form.getCommande(req);
 		Client client = commande.getClient();
-		Dao<Commande> dao = DaoFactory.getDaoCommande();
-		dao.save(commande);
+		Dao<Commande> daoCommande = DaoFactory.getDaoCommande();
+		daoCommande.save(commande);
+
+		Dao<Client> daoClient = DaoFactory.getDaoClient();
+		daoClient.save(commande.getClient());
+
 		req.setAttribute("client", client);
 		req.setAttribute("commande", commande);
 		req.setAttribute("errors", form.getErreurs());
 		req.setAttribute("resultat", form.getResultat());
 
 		HttpSession session = req.getSession();
-		session.setAttribute("commandes", dao.getAll());
+		session.setAttribute("commandes", daoCommande.getAll());
 
 		if (form.getErreurs().isEmpty()) {
 			this.getServletContext()

@@ -12,7 +12,9 @@
     </div>
         <div>
             <form method="post" action="clientCreation">
+             <fieldset>
             <c:import url="/WEB-INF/formulaireCreationClient.jsp"/>
+             </fieldset>
             <span class="info">${resultat}</span><br />    
                 <input type="submit" value="Valider"  />
                 <input type="reset" value="Remettre à zéro" /> <br />
