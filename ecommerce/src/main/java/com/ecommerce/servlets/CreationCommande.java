@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
-import com.ecommerce.business.CommandeCreationForm;
+import com.ecommerce.business.forms.CommandeCreationForm;
 
 public class CreationCommande extends HttpServlet {
 	@Override

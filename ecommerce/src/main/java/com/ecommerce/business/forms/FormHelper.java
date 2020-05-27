@@ -1,4 +1,4 @@
-package com.ecommerce.business;
+package com.ecommerce.business.forms;
 
 import java.util.Map;
 

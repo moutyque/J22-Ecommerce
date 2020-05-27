@@ -1,13 +1,13 @@
-package com.ecommerce.business;
+package com.ecommerce.business.forms;
 
 import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_MODE;
 import static com.ecommerce.Constante.ATT_COMMANDE_DELIVERY_STATUS;
 import static com.ecommerce.Constante.ATT_COMMANDE_PAY_MODE;
 import static com.ecommerce.Constante.ATT_COMMANDE_PAY_STATUS;
 import static com.ecommerce.Constante.ATT_COMMANDE_TOTAL;
-import static com.ecommerce.business.FormHelper.getNumbValeurChamp;
-import static com.ecommerce.business.FormHelper.getValeurChamp;
-import static com.ecommerce.business.FormHelper.setErreur;
+import static com.ecommerce.business.forms.FormHelper.getNumbValeurChamp;
+import static com.ecommerce.business.forms.FormHelper.getValeurChamp;
+import static com.ecommerce.business.forms.FormHelper.setErreur;
 
 import java.time.LocalDate;
 import java.util.HashMap;
