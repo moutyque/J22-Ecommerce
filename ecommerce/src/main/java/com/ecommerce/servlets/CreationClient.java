@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ecommerce.beans.Client;
 import com.ecommerce.business.forms.ClientCreationForm;
+import com.ecommerce.dao.DaoFactory;
+import com.ecommerce.dao.contract.Dao;
 
 public class CreationClient extends HttpServlet {
 
@@ -25,6 +27,9 @@ public class CreationClient extends HttpServlet {
 			throws ServletException, IOException {
 		ClientCreationForm form = new ClientCreationForm();
 		Client client = form.getClient(req);
+		Dao<Client> dao = DaoFactory.getDaoClient();
+		dao.save(client);
+
 		req.setAttribute("client", client);
 		req.setAttribute("errors", form.getErreurs());
 		req.setAttribute("resultat", form.getResultat());

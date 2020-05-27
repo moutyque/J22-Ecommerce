@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
 import com.ecommerce.business.forms.CommandeCreationForm;
+import com.ecommerce.dao.DaoFactory;
+import com.ecommerce.dao.contract.Dao;
 
 public class CreationCommande extends HttpServlet {
 	@Override
@@ -26,7 +28,8 @@ public class CreationCommande extends HttpServlet {
 		CommandeCreationForm form = new CommandeCreationForm();
 		Commande commande = form.getCommande(req);
 		Client client = commande.getClient();
-
+		Dao<Commande> dao = DaoFactory.getDaoCommande();
+		dao.save(commande);
 		req.setAttribute("client", client);
 		req.setAttribute("commande", commande);
 		req.setAttribute("errors", form.getErreurs());

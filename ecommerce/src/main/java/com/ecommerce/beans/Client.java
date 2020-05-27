@@ -6,6 +6,8 @@ public class Client {
 	private String adresse;
 	private String telephone;
 	private String email;
+	private String id = "";
+
 	public String getNom() {
 		return nom;
 	}
@@ -35,6 +37,12 @@ public class Client {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
