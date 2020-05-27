@@ -48,3 +48,17 @@ form input.sansLabel {
     font-style: italic;
     color: #E8A22B;
 }
+
+.header {
+    padding: 10px;
+    border: 1px #0568CD solid;
+    margin: 10px;
+    font: bold;color: blue;size: 10px;
+}
+
+.headerAction {
+    padding: 10px;
+    border: 1px #0568CD solid;
+    margin: 10px;
+    font: bold;color: red;size: 10px;
+}

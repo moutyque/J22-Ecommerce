@@ -10,6 +10,7 @@
 	</jsp-config>
 	<display-name>Archetype Created Web Application</display-name>
 
+	<!-- _____________________________________________Servlet declaration______________________________________________________ -->
 	<!-- Client servlets -->
 	<servlet>
 		<servlet-name>clientCreation</servlet-name>
@@ -25,6 +26,13 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!-- List clients servlets -->
+	<servlet>
+		<servlet-name>listeClients</servlet-name>
+		<servlet-class>com.ecommerce.servlets.ListClients</servlet-class>
+	</servlet>
+
+	<!-- _____________________________________________Servlet mapping______________________________________________________ -->
 
 	<!-- Client servlets mapping -->
 	<servlet-mapping>
@@ -39,10 +47,13 @@
 		<url-pattern>/commandeCreation</url-pattern>
 	</servlet-mapping>
 
-<filter>
-		<filter-name>RestrictionFilter</filter-name>
-		<filter-class>com.pro.filters.RestrictionFilter</filter-class>
-	</filter>
+	<!-- List clients servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>listeClients</servlet-name>
+		<url-pattern>/listeClients</url-pattern>
+	</servlet-mapping>
+	<!-- _____________________________________________Filter declaration______________________________________________________ -->
+
 	<filter>
 		<filter-name>Set Character Encoding</filter-name>
 		<filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
@@ -55,12 +66,10 @@
 			<param-value>false</param-value>
 		</init-param>
 	</filter>
-	
-	
-	<filter-mapping>
-		<filter-name>RestrictionFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
+	<!-- _____________________________________________Filter mapping______________________________________________________ -->
+
+
+
 	<filter-mapping>
 		<filter-name>Set Character Encoding</filter-name>
 		<url-pattern>/*</url-pattern>

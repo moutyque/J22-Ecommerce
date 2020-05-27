@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.ecommerce.beans.Client;
 import com.ecommerce.business.forms.ClientCreationForm;
@@ -33,6 +34,9 @@ public class CreationClient extends HttpServlet {
 		req.setAttribute("client", client);
 		req.setAttribute("errors", form.getErreurs());
 		req.setAttribute("resultat", form.getResultat());
+
+		HttpSession session = req.getSession();
+		session.setAttribute("clients", dao.getAll());
 
 		if (form.getErreurs().isEmpty()) {
 			this.getServletContext()
