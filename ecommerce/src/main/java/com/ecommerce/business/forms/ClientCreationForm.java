@@ -31,7 +31,7 @@ public class ClientCreationForm {
 	}
 
 	public Client getClient(HttpServletRequest req) {
-		
+		// TODO :add case for old client
 		Client client;
 		if (getValeurChamp(req, ATT_OLD_CLIENTS) != null) {
 
