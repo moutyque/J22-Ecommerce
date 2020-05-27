@@ -1,6 +1,10 @@
 package com.ecommerce.beans;
 
 public class Client {
+	@Override
+	public String toString() {
+		return this.prenom + " " + this.nom;
+	}
 	private String nom;
 	private String prenom;
 	private String adresse;

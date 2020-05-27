@@ -32,6 +32,11 @@
 		<servlet-class>com.ecommerce.servlets.ListClients</servlet-class>
 	</servlet>
 
+<!-- List commandes servlets -->
+	<servlet>
+		<servlet-name>listeCommandes</servlet-name>
+		<servlet-class>com.ecommerce.servlets.ListCommandes</servlet-class>
+	</servlet>
 	<!-- _____________________________________________Servlet mapping______________________________________________________ -->
 
 	<!-- Client servlets mapping -->
@@ -52,6 +57,13 @@
 		<servlet-name>listeClients</servlet-name>
 		<url-pattern>/listeClients</url-pattern>
 	</servlet-mapping>
+	
+	<!-- List commandes servlets mapping -->
+	<servlet-mapping>
+		<servlet-name>listeCommandes</servlet-name>
+		<url-pattern>/listeCommandes</url-pattern>
+	</servlet-mapping>
+	
 	<!-- _____________________________________________Filter declaration______________________________________________________ -->
 
 	<filter>
