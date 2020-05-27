@@ -27,8 +27,8 @@ public class TestCommandeCreation {
 		c1.setStatutLivraison("En cours");
 		c1.setStatutPaiment("Payé");
 
-		assertTrue(dao.save(c1));
-		assertTrue(dao.get(c1.getId()).isPresent());
+		dao.save(c1);
+		assertTrue(dao.get(c1.getId()) != null);
 	}
 
 	@Test
@@ -43,7 +43,7 @@ public class TestCommandeCreation {
 		c1.setMontant(123.1);
 		c1.setStatutLivraison("En cours");
 		c1.setStatutPaiment("Payé");
-		assertTrue(dao.save(c1));
+		dao.save(c1);
 
 		Commande c2 = new Commande();
 		c2.setClient(new Client());
@@ -53,7 +53,7 @@ public class TestCommandeCreation {
 		c2.setMontant(123.6);
 		c2.setStatutLivraison("Livré");
 		c2.setStatutPaiment("Payé");
-		assertTrue(dao.save(c2));
+		dao.save(c2);
 		assertEquals(2, dao.getAll().size());
 	}
 
@@ -69,7 +69,7 @@ public class TestCommandeCreation {
 		c1.setMontant(123.1);
 		c1.setStatutLivraison("En cours");
 		c1.setStatutPaiment("Payé");
-		assertTrue(dao.save(c1));
+		dao.save(c1);
 
 		assertEquals(date1, c1.getDate());
 		assertEquals("UPS", c1.getModeLivraison());
@@ -86,8 +86,8 @@ public class TestCommandeCreation {
 		c2.setMontant(123.1);
 		c2.setStatutLivraison("Livré");
 		c2.setStatutPaiment("Payé");
-		assertTrue(dao.save(c2));
-		c1 = dao.get(c1.getId()).get();
+		dao.save(c2);
+		c1 = dao.get(c1.getId());
 		assertEquals(date1, c1.getDate());
 		assertEquals("Post", c1.getModeLivraison());
 		assertEquals("Cheque", c1.getModePaiment());
@@ -111,7 +111,7 @@ public class TestCommandeCreation {
 		c1.setMontant(123.1);
 		c1.setStatutLivraison("En cours");
 		c1.setStatutPaiment("Payé");
-		assertTrue(dao.save(c1));
+		dao.save(c1);
 
 		Commande c2 = new Commande();
 		c2.setClient(new Client());
@@ -121,11 +121,11 @@ public class TestCommandeCreation {
 		c2.setMontant(123.6);
 		c2.setStatutLivraison("Livré");
 		c2.setStatutPaiment("Payé");
-		assertTrue(dao.save(c2));
+		dao.save(c2);
 
 		assertEquals(2, dao.getAll().size());
 
-		assertTrue(dao.delete(c2));
+		dao.delete(c2);
 		assertEquals(1, dao.getAll().size());
 	}
 }

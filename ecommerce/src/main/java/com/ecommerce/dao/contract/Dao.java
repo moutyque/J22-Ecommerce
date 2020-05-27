@@ -1,15 +1,14 @@
 package com.ecommerce.dao.contract;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 
 public interface Dao<T> {
 
-	public Optional<T> get(String id);
+	public T get(String id);
 
-	public List<T> getAll();
+	public Map<String, T> getAll();
 
-	public boolean save(T t);
+	public void save(T t);
 
-	public boolean delete(T t);
+	public void delete(T t);
 }
