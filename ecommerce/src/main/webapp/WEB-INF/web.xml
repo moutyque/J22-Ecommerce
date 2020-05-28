@@ -11,57 +11,82 @@
 	<display-name>Archetype Created Web Application</display-name>
 
 	<!-- _____________________________________________Servlet declaration______________________________________________________ -->
-	<!-- Client servlets -->
+	<!-- Client servlet -->
 	<servlet>
 		<servlet-name>clientCreation</servlet-name>
 		<servlet-class>com.ecommerce.servlets.CreationClient</servlet-class>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>D:\eclipse-workspace\pro\fichiers</location>
+			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
 	</servlet>
 
 
-	<!-- Commande servlets -->
+	<!-- Commande servlet -->
 	<servlet>
 		<servlet-name>commandeCreation</servlet-name>
 		<servlet-class>com.ecommerce.servlets.CreationCommande</servlet-class>
 		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>D:\eclipse-workspace\pro\fichiers</location>
+			<max-file-size>10485760</max-file-size> <!-- 10 Mo -->
+			<max-request-size>52428800</max-request-size> <!-- 5 x 10 Mo -->
+			<file-size-threshold>1048576</file-size-threshold> <!-- 1 Mo -->
+		</multipart-config>
 	</servlet>
 
-	<!-- List clients servlets -->
+	<!-- List clients servlet -->
 	<servlet>
 		<servlet-name>listeClients</servlet-name>
 		<servlet-class>com.ecommerce.servlets.ListClients</servlet-class>
 	</servlet>
 
-<!-- List commandes servlets -->
+	<!-- List commandes servlet -->
 	<servlet>
 		<servlet-name>listeCommandes</servlet-name>
 		<servlet-class>com.ecommerce.servlets.ListCommandes</servlet-class>
 	</servlet>
+
+	<!-- Download servlet -->
+	<servlet>
+		<servlet-name>download</servlet-name>
+		<servlet-class>com.ecommerce.servlets.Download</servlet-class>
+	</servlet>
+
 	<!-- _____________________________________________Servlet mapping______________________________________________________ -->
 
-	<!-- Client servlets mapping -->
+	<!-- Client servlet mapping -->
 	<servlet-mapping>
 		<servlet-name>clientCreation</servlet-name>
 		<url-pattern>/clientCreation</url-pattern>
 	</servlet-mapping>
 
 
-	<!-- Commande servlets mapping -->
+	<!-- Commande servlet mapping -->
 	<servlet-mapping>
 		<servlet-name>commandeCreation</servlet-name>
 		<url-pattern>/commandeCreation</url-pattern>
 	</servlet-mapping>
 
-	<!-- List clients servlets mapping -->
+	<!-- List clients servlet mapping -->
 	<servlet-mapping>
 		<servlet-name>listeClients</servlet-name>
 		<url-pattern>/listeClients</url-pattern>
 	</servlet-mapping>
-	
-	<!-- List commandes servlets mapping -->
+
+	<!-- List commandes servlet mapping -->
 	<servlet-mapping>
 		<servlet-name>listeCommandes</servlet-name>
 		<url-pattern>/listeCommandes</url-pattern>
+	</servlet-mapping>
+
+	<!-- Download servlet mapping-->
+	<servlet-mapping>
+		<servlet-name>download</servlet-name>
+		<url-pattern>/download/*</url-pattern>
 	</servlet-mapping>
 	
 	<!-- _____________________________________________Filter declaration______________________________________________________ -->

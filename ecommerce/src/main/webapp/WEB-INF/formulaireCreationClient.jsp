@@ -28,6 +28,11 @@
                     <label for="emailClient">Adresse email</label>
                     <input type="email" id="emailClient" name="emailClient" value="<c:out value="${client.email}"/>" size="20" maxlength="60" />
                    <span class="erreur">${errors.emailClient}</span><br />
+                   
+                   <label for="pictureClient">Image</label>
+                    <input type="file" id="image" name="image"  value="<c:out value="${client.fichier.fileName}"/>" />
+                	<span class="erreur">${errors.image}</span>
+                <br />
                     
 </body>
 </html>
