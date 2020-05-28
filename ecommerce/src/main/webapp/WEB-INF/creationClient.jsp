@@ -11,7 +11,7 @@
     <c:import url="/inc/menu.jsp"/>
     </div>
         <div>
-            <form method="post" action="clientCreation">
+            <form method="post" action="clientCreation" enctype='multipart/form-data'>
              <fieldset>
             <c:import url="/WEB-INF/formulaireCreationClient.jsp"/>
              </fieldset>

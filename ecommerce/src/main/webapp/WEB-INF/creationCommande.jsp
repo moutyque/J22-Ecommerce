@@ -30,7 +30,7 @@
 	<c:import url="/inc/menu.jsp" />
 
 
-	<form method="post" action="commandeCreation">
+	<form method="post" action="commandeCreation" enctype='multipart/form-data'>
 
 		<fieldset>
 			<label>

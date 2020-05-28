@@ -1,5 +1,7 @@
 package com.ecommerce.beans;
 
+import java.nio.file.Path;
+
 public class Client {
 	@Override
 	public String toString() {
@@ -11,9 +13,16 @@ public class Client {
 	private String telephone;
 	private String email;
 	private String id = "";
+	private Path fichier;
 
 	public String getNom() {
 		return nom;
+	}
+	public Path getFichier() {
+		return fichier;
+	}
+	public void setFichier(Path fichier) {
+		this.fichier = fichier;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;
