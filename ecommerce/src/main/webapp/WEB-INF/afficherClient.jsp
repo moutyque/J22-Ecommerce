@@ -30,7 +30,9 @@
 	<p>
 		Email : ${ client.email } <br />
 	</p>
-
+	<p>
+		Image : <a
+			href="<c:url value = "/download/${client.fichier.fileName}"/>">${client.fichier.fileName}</a>
 	</p>
 </body>
 </html>

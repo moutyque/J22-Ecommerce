@@ -11,10 +11,7 @@ import static com.ecommerce.Constante.FILES_PATH;
 import static com.ecommerce.business.forms.FormHelper.getValeurChamp;
 import static com.ecommerce.business.forms.FormHelper.setErreur;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
@@ -31,6 +28,7 @@ import javax.servlet.http.Part;
 
 import com.ecommerce.beans.Client;
 import com.ecommerce.dao.DaoFactory;
+import com.ecommerce.util.Helper;
 
 import eu.medsea.mimeutil.MimeUtil;
 
@@ -136,7 +134,7 @@ public class ClientCreationForm {
 
 		if (erreurs.isEmpty()) {
 			try {
-				ecrireFichier(fileContent, fileName, FILES_PATH);
+				Helper.witteFile(fileContent, new File(FILES_PATH, fileName));
 			} catch (Exception e) {
 				setErreur(erreurs, ATT_CLIENT_PICTURE,
 						"Erreur lors de l'écriture du fichier sur le disque.");
@@ -144,23 +142,6 @@ public class ClientCreationForm {
 		}
 
 		return Paths.get(FILES_PATH + fileName);
-
-	}
-
-	private void ecrireFichier(InputStream fileContent, String fileName,
-			String filesPath) {
-		try (BufferedInputStream in = new BufferedInputStream(fileContent);
-				BufferedOutputStream out = new BufferedOutputStream(
-						new FileOutputStream(new File(filesPath + fileName)))) {
-			byte[] tampon = new byte[1024];
-			int longueur = 0;
-			while ((longueur = in.read(tampon)) > 0) {
-				out.write(tampon, 0, longueur);
-			}
-		} catch (IOException e) {
-			setErreur(erreurs, ATT_CLIENT_PICTURE,
-					"Erreur lors de l'écriture du fichier sur le disque.");
-		}
 
 	}
 
