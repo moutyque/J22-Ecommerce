@@ -9,6 +9,7 @@ import java.util.Properties;
 
 import com.ecommerce.dao.exception.DAOConfigurationException;
 import com.ecommerce.dao.impl.db.DaoClient;
+import com.ecommerce.dao.impl.db.DaoCommande;
 
 public class DaoFactoryDB extends DAOFactory {
 
@@ -70,9 +71,13 @@ public class DaoFactoryDB extends DAOFactory {
 		}
 
 		DAOFactory instance = new DaoFactoryDB(url, nomUtilisateur, motDePasse);
-		instance.setDaoClient(new DaoClient((DaoFactoryDB) instance));
-		// instance.setDaoCommande((new DaoCommande((DaoFactoryDB) instance));
+		instanciateDAO(instance);
 		return instance;
+	}
+
+	private static void instanciateDAO(DAOFactory instance) {
+		instance.setDaoClient(new DaoClient((DaoFactoryDB) instance));
+		instance.setDaoCommande((new DaoCommande((DaoFactoryDB) instance)));
 	}
 
 	// TODO : change to add choice in the implementation of the DAO with

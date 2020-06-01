@@ -60,5 +60,9 @@ public class Commande {
 	public void setId(String id) {
 		this.id = id;
 	}
+	public void generateId() {
 
+		this.setId(BeanHelper.generateId(this.getDate().toString()
+				+ this.getMontant() + this.getClient().toString()));
+	}
 }
