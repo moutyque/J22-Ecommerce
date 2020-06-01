@@ -7,11 +7,11 @@ public class Client {
 	public String toString() {
 		return this.prenom + " " + this.nom;
 	}
-	private String nom;
-	private String prenom;
-	private String adresse;
-	private String telephone;
-	private String email;
+	private String nom = "";
+	private String prenom = "";
+	private String adresse = "";
+	private String telephone = "";
+	private String email = "";
 	private String id = "";
 	private Path fichier;
 
@@ -56,6 +56,10 @@ public class Client {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public void generateId() {
+		this.setId(BeanHelper.generateId(
+				this.getNom() + this.getPrenom() + this.getEmail()));
 	}
 
 }

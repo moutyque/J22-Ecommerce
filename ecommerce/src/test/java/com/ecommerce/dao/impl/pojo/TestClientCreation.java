@@ -1,4 +1,4 @@
-package ecommerce.client;
+package com.ecommerce.dao.impl.pojo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.ecommerce.beans.Client;
-import com.ecommerce.dao.impl.DaoClient;
+import com.ecommerce.dao.impl.pojo.DaoClient;
 
 public class TestClientCreation {
 

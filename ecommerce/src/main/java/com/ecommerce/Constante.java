@@ -16,4 +16,7 @@ public interface Constante {
 	public static final String ATT_OLD_CLIENTS = "oldClients";
 	// TODO : change for config file
 	public static final String FILES_PATH = "D:\\eclipse-workspace\\ecommerce\\fichiers\\";
+
+	public static final String CONF_DAO_FACTORY = "daofactory";
+
 }

@@ -39,7 +39,7 @@ public class CommandeCreationForm {
 	}
 
 	public Commande getCommande(HttpServletRequest req) {
-		ClientCreationForm form = new ClientCreationForm();
+		ClientCreationForm form = new ClientCreationForm(req);
 		Commande commande = new Commande();
 
 		commande.setClient(form.getClient(req));
