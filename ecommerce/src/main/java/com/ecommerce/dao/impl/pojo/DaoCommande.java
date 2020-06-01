@@ -1,9 +1,8 @@
-package com.ecommerce.dao.impl;
+package com.ecommerce.dao.impl.pojo;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ecommerce.beans.BeanHelper;
 import com.ecommerce.beans.Commande;
 import com.ecommerce.dao.contract.Dao;
 
@@ -23,9 +22,7 @@ public class DaoCommande implements Dao<Commande> {
 	@Override
 	public void save(Commande t) {
 
-		if (t.getId().isEmpty())
-			t.setId(BeanHelper
-					.generateId(t.getDate().toString() + t.getMontant()));
+		t.generateId();
 		commandes.put(t.getId(), t);
 
 	}

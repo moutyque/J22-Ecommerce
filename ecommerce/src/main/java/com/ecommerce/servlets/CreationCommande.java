@@ -8,18 +8,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ecommerce.Constante;
 import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
 import com.ecommerce.business.forms.CommandeCreationForm;
-import com.ecommerce.dao.DaoFactory;
 import com.ecommerce.dao.contract.Dao;
+import com.ecommerce.dao.factory.DAOFactory;
 
 public class CreationCommande extends HttpServlet {
+	private Dao<Commande> daoCommande;
+	private Dao<Client> daoClient;
+
+	@Override
+	public void init() throws ServletException {
+		this.daoCommande = ((DAOFactory) getServletContext()
+				.getAttribute(Constante.CONF_DAO_FACTORY)).getDaoCommande();
+		this.daoClient = ((DAOFactory) getServletContext()
+				.getAttribute(Constante.CONF_DAO_FACTORY)).getDaoClient();
+	}
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		req.setAttribute("clients", DaoFactory.getDaoClient().getAll());
+		req.setAttribute("clients", daoClient.getAll());
 		this.getServletContext()
 				.getRequestDispatcher("/WEB-INF/creationCommande.jsp")
 				.forward(req, resp);
@@ -31,10 +43,8 @@ public class CreationCommande extends HttpServlet {
 		CommandeCreationForm form = new CommandeCreationForm();
 		Commande commande = form.getCommande(req);
 		Client client = commande.getClient();
-		Dao<Commande> daoCommande = DaoFactory.getDaoCommande();
 		daoCommande.save(commande);
 
-		Dao<Client> daoClient = DaoFactory.getDaoClient();
 		daoClient.save(commande.getClient());
 
 		req.setAttribute("client", client);

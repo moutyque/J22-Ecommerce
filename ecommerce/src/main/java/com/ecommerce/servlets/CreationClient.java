@@ -8,12 +8,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.ecommerce.Constante;
 import com.ecommerce.beans.Client;
 import com.ecommerce.business.forms.ClientCreationForm;
-import com.ecommerce.dao.DaoFactory;
 import com.ecommerce.dao.contract.Dao;
-
+import com.ecommerce.dao.factory.DAOFactory;
 public class CreationClient extends HttpServlet {
+
+	private Dao<Client> dao;
+
+	@Override
+	public void init() throws ServletException {
+		this.dao = ((DAOFactory) getServletContext()
+				.getAttribute(Constante.CONF_DAO_FACTORY)).getDaoClient();
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -26,9 +34,8 @@ public class CreationClient extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		ClientCreationForm form = new ClientCreationForm();
+		ClientCreationForm form = new ClientCreationForm(req);
 		Client client = form.getClient(req);
-		Dao<Client> dao = DaoFactory.getDaoClient();
 		dao.save(client);
 
 		req.setAttribute("client", client);

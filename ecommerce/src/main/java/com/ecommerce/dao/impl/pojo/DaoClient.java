@@ -1,9 +1,8 @@
-package com.ecommerce.dao.impl;
+package com.ecommerce.dao.impl.pojo;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ecommerce.beans.BeanHelper;
 import com.ecommerce.beans.Client;
 import com.ecommerce.dao.contract.Dao;
 
@@ -20,8 +19,8 @@ public class DaoClient implements Dao<Client> {
 
 	public void save(Client t) {
 
-		if (t.getId().isEmpty())
-			t.setId(BeanHelper.generateId(t.getNom() + t.getPrenom()));
+		t.generateId();
+
 		clients.put(t.getId(), t);
 
 	}

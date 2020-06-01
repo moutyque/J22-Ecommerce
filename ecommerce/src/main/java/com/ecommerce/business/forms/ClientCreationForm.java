@@ -26,13 +26,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 
+import com.ecommerce.Constante;
 import com.ecommerce.beans.Client;
-import com.ecommerce.dao.DaoFactory;
+import com.ecommerce.dao.contract.Dao;
+import com.ecommerce.dao.factory.DAOFactory;
 import com.ecommerce.util.Helper;
 
 import eu.medsea.mimeutil.MimeUtil;
 
 public class ClientCreationForm {
+	private Dao<Client> dao;
+	public ClientCreationForm(HttpServletRequest req) {
+		this.dao = ((DAOFactory) req.getServletContext()
+				.getAttribute(Constante.CONF_DAO_FACTORY)).getDaoClient();
+	}
 
 	private String resultat;
 	private Map<String, String> erreurs = new HashMap<>();
@@ -50,8 +57,7 @@ public class ClientCreationForm {
 		Client client;
 		if (getValeurChamp(req, ATT_OLD_CLIENTS) != null) {
 
-			client = DaoFactory.getDaoClient()
-					.get(getValeurChamp(req, ATT_OLD_CLIENTS));
+			client = dao.get(getValeurChamp(req, ATT_OLD_CLIENTS));
 		} else {
 			client = new Client();
 			client.setNom(getValeurChamp(req, ATT_CLIENT_LAST_NAME));

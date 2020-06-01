@@ -1,4 +1,4 @@
-package ecommerce.client;
+package com.ecommerce.dao.impl.pojo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import com.ecommerce.beans.Client;
-import com.ecommerce.dao.impl.DaoClient;
 
 public class TestClientCreation {
 
@@ -67,7 +66,7 @@ public class TestClientCreation {
 		c2.setNom("MARTY");
 		c2.setPrenom("Quentin");
 		c2.setAdresse("2 avenue du generalle de gaulle");
-		c2.setEmail("j.m@g.c");
+		c2.setEmail("q.m@g.c");
 		c2.setTelephone("0123456780");
 		dao.save(c2);
 
@@ -75,7 +74,7 @@ public class TestClientCreation {
 		assertEquals("MARTY", c1.getNom());
 		assertEquals("Quentin", c1.getPrenom());
 		assertEquals("2 avenue du generalle de gaulle", c1.getAdresse());
-		assertEquals("j.m@g.c", c1.getEmail());
+		assertEquals("q.m@g.c", c1.getEmail());
 		assertEquals("0123456780", c1.getTelephone());
 
 		assertEquals(1, dao.getAll().size());

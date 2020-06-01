@@ -9,7 +9,9 @@
 		</jsp-property-group>
 	</jsp-config>
 	<display-name>Archetype Created Web Application</display-name>
-
+	<listener>
+		<listener-class>com.ecommerce.dao.config.InitialisationDaoFactory</listener-class>
+	</listener>
 	<!-- _____________________________________________Servlet declaration______________________________________________________ -->
 	<!-- Client servlet -->
 	<servlet>

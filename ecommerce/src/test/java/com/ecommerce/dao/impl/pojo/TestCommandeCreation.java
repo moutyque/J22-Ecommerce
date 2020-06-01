@@ -1,4 +1,4 @@
-package ecommerce.commande;
+package com.ecommerce.dao.impl.pojo;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import com.ecommerce.beans.Client;
 import com.ecommerce.beans.Commande;
-import com.ecommerce.dao.impl.DaoCommande;
+import com.ecommerce.dao.impl.pojo.DaoCommande;
 
 public class TestCommandeCreation {
 
