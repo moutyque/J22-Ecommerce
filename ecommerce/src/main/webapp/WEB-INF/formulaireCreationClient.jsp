@@ -30,7 +30,7 @@
                    <span class="erreur">${errors.emailClient}</span><br />
                    
                    <label for="pictureClient">Image<span class="requis">*</span></label>
-                    <input type="file" id="image" name="image"  value="<c:out value="${client.fichier.fileName}"/>" />
+                    <input type="file" id="image" name="image"  value="<c:out value="${client.image}"/>" />
                 	<span class="erreur">${errors.image}</span>
                 <br />
                     

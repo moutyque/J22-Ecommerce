@@ -35,7 +35,7 @@
 	</p>
 		<p>
 		Image : <a
-			href="<c:url value = "/download/${client.fichier.fileName}"/>">${client.fichier.fileName}</a>
+			href="<c:url value = "/download/${client.image}"/>">${client.image}</a>
 	</p>
 	<p>Commande</p>
 	<p>

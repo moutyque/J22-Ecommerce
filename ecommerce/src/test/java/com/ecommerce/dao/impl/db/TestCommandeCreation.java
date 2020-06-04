@@ -2,7 +2,6 @@ package com.ecommerce.dao.impl.db;
 
 import static org.junit.Assert.assertEquals;
 
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.Random;
 
@@ -31,7 +30,7 @@ public class TestCommandeCreation {
 		client.setAdresse("1 avenue du generalle de gaulle");
 		client.setEmail("q.m@g.c");
 		client.setTelephone("0123456789");
-		client.setFichier(Paths.get(""));
+		client.setImage("");
 
 		daoFacto.getDaoClient().save(client);
 	}
@@ -48,7 +47,7 @@ public class TestCommandeCreation {
 		client.setAdresse("1 avenue du generalle de gaulle");
 		client.setEmail("q.m@g.c");
 		client.setTelephone("0123456789");
-		client.setFichier(Paths.get(""));
+		client.setImage("");
 
 		Commande commande = new Commande();
 		commande.setClient(client);
@@ -95,7 +94,7 @@ public class TestCommandeCreation {
 		client.setAdresse("1 avenue du generalle de gaulle");
 		client.setEmail("q.m@g.c");
 		client.setTelephone("0123456789");
-		client.setFichier(Paths.get(""));
+		client.setImage("");
 
 		Commande commande = new Commande();
 		commande.setClient(client);

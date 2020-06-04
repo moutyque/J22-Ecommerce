@@ -27,7 +27,7 @@
 				<td>${client.telephone }</td>
 				<td>${client.email }</td>
 				<td><a
-			href="<c:url value = "/download/${client.fichier.fileName}"/>">${client.fichier.fileName}</a></td>
+			href="<c:url value = "/download/${client.image}"/>">${client.image}</a></td>
 				<td><form method="post" action="listeClients">
 						<input type="submit" value="Supprimer" />
 						<input type='hidden' name='deleteId' id='deleteId'

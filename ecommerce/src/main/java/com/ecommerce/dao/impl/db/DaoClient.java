@@ -1,6 +1,5 @@
 package com.ecommerce.dao.impl.db;
 
-import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,7 +93,7 @@ public class DaoClient implements Dao<Client> {
 				preparedStatement = DAOUtil.initialisationRequetePreparee(
 						connexion, SQL_INSERT, true, t.getId(), t.getNom(),
 						t.getPrenom(), t.getAdresse(), t.getTelephone(),
-						t.getEmail(), t.getFichier().toString());
+						t.getEmail(), t.getImage());
 				int statut = preparedStatement.executeUpdate();
 				/* Analyse du statut retourné par la requête d'insertion */
 				if (statut == 0) {
@@ -145,7 +144,7 @@ public class DaoClient implements Dao<Client> {
 		client.setId(resultSet.getString("id"));
 		client.setAdresse(resultSet.getString("adresse"));
 		client.setEmail(resultSet.getString("nom"));
-		client.setFichier(Paths.get(resultSet.getString("image")));
+		client.setImage(resultSet.getString("image"));
 		return client;
 	}
 }
