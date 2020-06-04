@@ -1,28 +1,40 @@
 package com.ecommerce.beans;
 
-import java.nio.file.Path;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "client")
 public class Client {
 	@Override
 	public String toString() {
 		return this.prenom + " " + this.nom;
 	}
+
 	private String nom = "";
 	private String prenom = "";
 	private String adresse = "";
 	private String telephone = "";
 	private String email = "";
-	private String id = "";
-	private Path fichier;
 
+	@Id
+	private String id = "";
+
+	private String image;
+
+	public Client() {
+
+	}
 	public String getNom() {
 		return nom;
 	}
-	public Path getFichier() {
-		return fichier;
+
+	public String getImage() {
+		return image;
 	}
-	public void setFichier(Path fichier) {
-		this.fichier = fichier;
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public void setNom(String nom) {
 		this.nom = nom;

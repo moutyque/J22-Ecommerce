@@ -3,6 +3,8 @@ package com.ecommerce.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,10 @@ import com.ecommerce.beans.Commande;
 import com.ecommerce.business.forms.CommandeCreationForm;
 import com.ecommerce.dao.contract.Dao;
 import com.ecommerce.dao.factory.DAOFactory;
-
+@WebServlet("/commandeCreation")
+@MultipartConfig(location = "D:\\eclipse-workspace\\pro\\fichiers", fileSizeThreshold = 1024
+		* 1024, maxFileSize = 1024 * 1024
+				* 1024, maxRequestSize = 5 * 1024 * 1024 * 1024)
 public class CreationCommande extends HttpServlet {
 	private Dao<Commande> daoCommande;
 	private Dao<Client> daoClient;

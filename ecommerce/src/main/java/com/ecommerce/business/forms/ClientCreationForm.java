@@ -14,8 +14,6 @@ import static com.ecommerce.business.forms.FormHelper.setErreur;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -65,7 +63,7 @@ public class ClientCreationForm {
 			client.setAdresse(getValeurChamp(req, ATT_CLIENT_ADRESS));
 			client.setTelephone(getValeurChamp(req, ATT_CLIENT_PHONE));
 			client.setEmail(getValeurChamp(req, ATT_CLIENT_EMAIL));
-			client.setFichier(saveFile(req));
+			client.setImage(saveFile(req));
 		}
 
 		try {
@@ -92,7 +90,7 @@ public class ClientCreationForm {
 		}
 
 		try {
-			validationTelephone(client.getAdresse());
+			validationTelephone(client.getTelephone());
 		} catch (Exception e) {
 			setErreur(erreurs, ATT_CLIENT_PHONE, e.getMessage());
 		}
@@ -105,7 +103,7 @@ public class ClientCreationForm {
 		return client;
 	}
 
-	private Path saveFile(HttpServletRequest request) {
+	private String saveFile(HttpServletRequest request) {
 
 		String fileName = null;
 		InputStream fileContent = null;
@@ -147,7 +145,7 @@ public class ClientCreationForm {
 			}
 		}
 
-		return Paths.get(FILES_PATH + fileName);
+		return fileName;
 
 	}
 
@@ -174,7 +172,7 @@ public class ClientCreationForm {
 	}
 
 	private void validationPrenom(String nom) throws Exception {
-		if (nom != null && nom.length() < 2) {
+		if (nom == null || nom.length() < 2) {
 			throw new Exception(
 					"Le prénom d'utilisateur doit contenir au moins 3 caractères.");
 		}

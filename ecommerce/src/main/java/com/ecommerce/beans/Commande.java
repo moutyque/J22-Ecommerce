@@ -2,8 +2,43 @@ package com.ecommerce.beans;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+@Entity
+@Table(name = "commande")
 public class Commande {
 
+	@ManyToOne
+	@JoinColumn(name = "id_client")
+	private Client client;
+
+	@Column(name = "date")
+	private LocalDate date;
+
+	@Column(name = "montant")
+	private double montant;
+
+	@Column(name = "mode_paiement")
+	private String modePaiment;
+
+	@Column(name = "statut_paiement")
+	private String statutPaiment;
+
+	@Column(name = "mode_livraison")
+	private String modeLivraison;
+
+	@Column(name = "statut_livraison")
+	private String statutLivraison;
+	@Id
+	private String id = "";
+
+	public Commande() {
+
+	}
 	public Client getClient() {
 		return client;
 	}
@@ -46,14 +81,7 @@ public class Commande {
 	public void setStatutLivraison(String statutLivraison) {
 		this.statutLivraison = statutLivraison;
 	}
-	private Client client;
-	private LocalDate date;
-	private double montant;
-	private String modePaiment;
-	private String statutPaiment;
-	private String modeLivraison;
-	private String statutLivraison;
-	private String id = "";
+
 	public String getId() {
 		return id;
 	}

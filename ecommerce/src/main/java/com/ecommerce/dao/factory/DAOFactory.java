@@ -7,6 +7,8 @@ import com.ecommerce.dao.exception.DAOConfigurationException;
 
 public abstract class DAOFactory {
 
+	protected static DAOFactory daoFactory;
+
 	private Dao<Client> daoClient = null;
 	private Dao<Commande> daoCommande = null;
 	public Dao<Client> getDaoClient() {

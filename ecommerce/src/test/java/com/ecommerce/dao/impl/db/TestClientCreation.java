@@ -2,7 +2,6 @@ package com.ecommerce.dao.impl.db;
 
 import static org.junit.Assert.assertEquals;
 
-import java.nio.file.Paths;
 import java.util.Random;
 
 import org.junit.Before;
@@ -38,7 +37,7 @@ public class TestClientCreation {
 		c1.setAdresse("1 avenue du generalle de gaulle");
 		c1.setEmail("q.m@g.c");
 		c1.setTelephone("0123456789");
-		c1.setFichier(Paths.get(""));
+		c1.setImage("");
 
 		daoClient.save(c1);
 
@@ -56,7 +55,7 @@ public class TestClientCreation {
 		c1.setAdresse("1 avenue du generalle de gaulle");
 		c1.setEmail("q.m@g.c");
 		c1.setTelephone("0123456789");
-		c1.setFichier(Paths.get(""));
+		c1.setImage("");
 
 		int count = daoClient.getAll().size();
 		daoClient.save(c1);
@@ -76,7 +75,7 @@ public class TestClientCreation {
 		c1.setAdresse("1 avenue du generalle de gaulle");
 		c1.setEmail("q.m@g.c");
 		c1.setTelephone("0123456789");
-		c1.setFichier(Paths.get(""));
+		c1.setImage("");
 
 		daoClient.save(c1);
 		int initSize = daoClient.getAll().size();

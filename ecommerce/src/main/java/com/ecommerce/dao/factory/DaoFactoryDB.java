@@ -34,45 +34,51 @@ public class DaoFactoryDB extends DAOFactory {
 	 * données, charger le driver JDBC et retourner une instance de la Factory
 	 */
 	public static DAOFactory getInstance() throws DAOConfigurationException {
-		Properties properties = new Properties();
-		String url;
-		String driver;
-		String nomUtilisateur;
-		String motDePasse;
 
-		ClassLoader classLoader = Thread.currentThread()
-				.getContextClassLoader();
-		InputStream fichierProperties = classLoader
-				.getResourceAsStream(FICHIER_PROPERTIES);
+		if (daoFactory == null) {
+			Properties properties = new Properties();
+			String url;
+			String driver;
+			String nomUtilisateur;
+			String motDePasse;
 
-		if (fichierProperties == null) {
-			throw new DAOConfigurationException("Le fichier properties "
-					+ FICHIER_PROPERTIES + " est introuvable.");
+			ClassLoader classLoader = Thread.currentThread()
+					.getContextClassLoader();
+			InputStream fichierProperties = classLoader
+					.getResourceAsStream(FICHIER_PROPERTIES);
+
+			if (fichierProperties == null) {
+				throw new DAOConfigurationException("Le fichier properties "
+						+ FICHIER_PROPERTIES + " est introuvable.");
+			}
+
+			try {
+				properties.load(fichierProperties);
+				url = properties.getProperty(PROPERTY_URL);
+				driver = properties.getProperty(PROPERTY_DRIVER);
+				nomUtilisateur = properties
+						.getProperty(PROPERTY_NOM_UTILISATEUR);
+				motDePasse = properties.getProperty(PROPERTY_MOT_DE_PASSE);
+			} catch (IOException e) {
+				throw new DAOConfigurationException(
+						"Impossible de charger le fichier properties "
+								+ FICHIER_PROPERTIES,
+						e);
+			}
+
+			try {
+				Class.forName(driver);
+			} catch (ClassNotFoundException e) {
+				throw new DAOConfigurationException(
+						"Le driver est introuvable dans le classpath.", e);
+			}
+
+			DAOFactory instance = new DaoFactoryDB(url, nomUtilisateur,
+					motDePasse);
+			instanciateDAO(instance);
 		}
 
-		try {
-			properties.load(fichierProperties);
-			url = properties.getProperty(PROPERTY_URL);
-			driver = properties.getProperty(PROPERTY_DRIVER);
-			nomUtilisateur = properties.getProperty(PROPERTY_NOM_UTILISATEUR);
-			motDePasse = properties.getProperty(PROPERTY_MOT_DE_PASSE);
-		} catch (IOException e) {
-			throw new DAOConfigurationException(
-					"Impossible de charger le fichier properties "
-							+ FICHIER_PROPERTIES,
-					e);
-		}
-
-		try {
-			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			throw new DAOConfigurationException(
-					"Le driver est introuvable dans le classpath.", e);
-		}
-
-		DAOFactory instance = new DaoFactoryDB(url, nomUtilisateur, motDePasse);
-		instanciateDAO(instance);
-		return instance;
+		return daoFactory;
 	}
 
 	private static void instanciateDAO(DAOFactory instance) {
