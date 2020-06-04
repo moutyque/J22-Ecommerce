@@ -92,7 +92,7 @@ public class ClientCreationForm {
 		}
 
 		try {
-			validationTelephone(client.getAdresse());
+			validationTelephone(client.getTelephone());
 		} catch (Exception e) {
 			setErreur(erreurs, ATT_CLIENT_PHONE, e.getMessage());
 		}
@@ -174,7 +174,7 @@ public class ClientCreationForm {
 	}
 
 	private void validationPrenom(String nom) throws Exception {
-		if (nom != null && nom.length() < 2) {
+		if (nom == null || nom.length() < 2) {
 			throw new Exception(
 					"Le prénom d'utilisateur doit contenir au moins 3 caractères.");
 		}

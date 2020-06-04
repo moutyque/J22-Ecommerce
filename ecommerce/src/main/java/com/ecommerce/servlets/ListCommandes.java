@@ -3,6 +3,7 @@ package com.ecommerce.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,6 +14,7 @@ import com.ecommerce.beans.Commande;
 import com.ecommerce.dao.contract.Dao;
 import com.ecommerce.dao.factory.DAOFactory;
 
+@WebServlet("/listeCommandes")
 public class ListCommandes extends HttpServlet {
 	private static final String VUE = "/WEB-INF/listeCommandes.jsp";
 
